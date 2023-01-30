@@ -1,0 +1,323 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --basic-fc: #ffffff;
+  --hover-fc: #065e7c;
+  --primary-fc: #e1e1e6;
+  --second-fc: #7c7c8a;
+
+  --background-c: #000000;
+
+  --thead-bc: #092d38;
+
+  --img-bc: #c4c4c4;
+
+  --primary-row: rgba(6, 22, 27, 0.5);
+  --second-row: #06181c;
+
+  --button-bc: #065e7c;
+  --button-hover: #ffffff;
+  --button-remove: #f75a68;
+}
+
+body {
+  font-size: 1.6rem;
+
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+body * {
+  font-family: 'Roboto', sans-serif;
+}
+
+#app {
+  margin: 0 auto;
+  max-width: 100rem;
+  padding: 0 1.5rem;
+}
+
+/*=====HEADER=====*/
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  margin: 7rem auto 8rem;
+}
+
+header .search {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.search input {
+  height: 4.8rem;
+  width: clamp(30rem, 10rem + 25vw, 46rem);
+
+  background: #06181c;
+
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1.6rem;
+
+  color: var(--primary-fc);
+  font-size: 1.6rem;
+}
+
+.search input::placeholder {
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 100%;
+
+  color: #7c7c8a;
+}
+
+.search button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+
+  height: 4.8rem;
+
+  border: none;
+
+  padding: 1.2rem 3.2rem;
+
+  color: var(--basic-fc);
+  background: var(--button-bc);
+
+  border-radius: 0.5rem;
+
+  text-transform: uppercase;
+
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+
+  transition: 0.3s;
+}
+
+/*Ao invés de usar assim
+.search button svg path:hover
+que faz com que o svg só mude cor ao passar em cima dele
+da forma abaixo eu consigo alterar o fill ao passar em cima do button*/
+.search button:hover svg path,
+.search button:hover {
+  color: var(--hover-fc);
+  background-color: var(--button-hover);
+  fill: var(--hover-fc);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/*=====TABELA=====*/
+
+table {
+  width: 100%;
+
+  margin: 0 auto 5rem;
+
+  /* border-collapse: collapse; isto que estava dando erro */
+  border-spacing: 0;
+
+  /* -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem; */
+  border-radius: 0.5rem;
+
+  overflow: hidden;
+  border: 1px solid #4a808c;
+}
+
+table * {
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 160%;
+  color: var(--primary-fc);
+}
+
+thead {
+  background-color: var(--thead-bc);
+}
+
+/* thead tr {
+  border-top: 1px solid #4a808c;
+  border-left: 1px solid #4a808c;
+  border-right: 1px solid #4a808c;
+
+} */
+
+table th {
+  padding: 1.6rem 4rem;
+  text-align: left;
+}
+/* overflow: hidden solucinou o problema*/
+/* thead tr th:first-child {
+  border-top-left-radius: 0.5rem;
+}
+thead tr th:last-child {
+  border-top-right-radius: 0.5rem;
+}  */
+
+tbody a {
+  text-decoration: none;
+}
+
+tbody tr td {
+  border-bottom: 1px solid #4a808c;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0 solid #4a808c;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--primary-row);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--second-row);
+}
+
+/* overflow: hidden resolveu o problema*/
+/* tbody .user:last-child {
+  border-radius: 0.5rem;
+}
+
+tbody .remove:last-child {
+  border-bottom-right-radius: 0.5rem;
+}  */
+
+tbody button {
+  border: none;
+  background-color: transparent;
+  color: var(--button-remove);
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+tbody button:hover {
+  filter: contrast(3) saturate(3);
+  transform: scale(1.1);
+}
+
+table td {
+  padding: 2.8rem 4rem;
+  text-align: left;
+}
+
+tbody .user {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+tbody .user img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+}
+
+tbody .user span {
+  font-weight: 400;
+}
+
+@media (max-width: 810px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 3rem;
+  }
+
+  .search input {
+    height: 3.6rem;
+    padding: 0 1.2rem;
+  }
+
+  .search input::placeholder {
+    font-size: 1.4rem;
+  }
+
+  .search button {
+    height: 3.6rem;
+    font-size: 1.2rem;
+
+    padding: 0 1.6rem;
+  }
+
+  table * {
+    font-size: 1.4rem;
+  }
+
+  table th {
+    padding: 1rem 2.5rem;
+  }
+
+  table td {
+    padding: 1.5rem 2.5rem;
+  }
+
+}
+
+@media (max-width: 570px) {
+  /* header .search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  } */
+
+  header {
+    margin: 4rem auto 3.2rem;
+  }
+
+  header img {
+    width: 13rem;
+  }
+
+  header .search input {
+    width: clamp(18rem, 30vw + 10rem, 30rem);
+  }
+
+  header .search input::placeholder {
+    font-size: 1.2rem;
+
+  }
+
+  header .search button {
+    padding: 1rem;
+  }
+
+  header .search button span {
+    display: none;
+  }
+
+  .repositories {
+    display: none;
+  }
+
+  .followers {
+    display: none;
+  }
+}
